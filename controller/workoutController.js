@@ -41,14 +41,12 @@ const workoutController = {
 
     fetchPreviousWorkoutByName: async (req, res) => {
         const { name, userId } = req.body;
-
-        console.log({ name, userId })
-
         try {
             const userWorkout = await workoutService.fetchAll(userId);
             const workoutCategory = userWorkout
                 .map(user => user.workoutCategory
                     .find(workoutCategory => workoutCategory.name === name))
+                .filter(category => category !== undefined && category !== null);
 
             if (!workoutCategory[1]) return res.status(200).json({ status: false, message: "Document doesn't exist" })
             return res.status(200).json({ status: true, payload: workoutCategory[1] })
