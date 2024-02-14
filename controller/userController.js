@@ -40,6 +40,7 @@ const userController = {
     createUser: async (req, res) => {
         try {
             const payload = req.body.payload;
+            
             if (!payload) return res.status(400).json({ msg: "Payload cannot be null" });
 
             const newUser = new User(payload);
