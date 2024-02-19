@@ -5,6 +5,16 @@ const DataSchema = new mongoose.Schema({
     date: { type: Date, default: Date.now() }
 });
 
+const ImageSchema = new mongoose.Schema({
+    imageUrl: { type: String },
+    description: { type: String },
+})
+
+const GallerySchema = new mongoose.Schema({
+    date: { type: Date, default: Date.now() },
+    image: [ImageSchema]
+})
+
 const UserSchema = new mongoose.Schema({
     firstName: { type: String },
     lastName: { type: String },
@@ -22,6 +32,7 @@ const UserSchema = new mongoose.Schema({
     shoulder: { type: Number },
     chest: { type: Number }, 
     address: { type: String },
+    gallery: { type: [GallerySchema] },
     medicalHistory: [{ type: String }],
     approved: { type: Boolean, default: false },
     waterIntake: {

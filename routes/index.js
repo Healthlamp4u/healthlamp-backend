@@ -15,6 +15,8 @@ router.delete("/delete-workout/:id", workoutController.deleteWorkout)
 // User Routes
 router.get('/users', userController.getAllUsers)
 router.get('/user/:userId', userController.getUserById)
+router.post('/gallery', userController.getUserGallery)
+router.put('/update-gallery', userController.updateUserGallery)
 router.post('/fetch-user-by-email', userController.getUserByEmail)
 router.post('/create-user', userController.createUser)
 router.put('/update-user', userController.updateUser)

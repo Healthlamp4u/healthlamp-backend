@@ -37,6 +37,38 @@ const userController = {
         }
     },
 
+    getUserGallery: async (req, res) => {
+        try {
+            const email = req.body.email;
+
+            const userResponse = await User.findOne({ email });
+            if (!userResponse) return res.status(400).json({ msg: "User not found" });
+
+            return res.status(200).json(userResponse.gallery);
+        } catch (err) {
+            return res.status(500).json(err);
+        }
+    },
+
+    updateUserGallery: async (req, res) => {
+        try {
+            const email = req.body.email;
+            const gallery = req.body.gallery
+
+            const userResponse = await User.findOne({ email });
+            if (!userResponse) return res.status(400).json({ msg: "User not found" });
+
+            userResponse.gallery = gallery
+            const updatedUser = await User.findOneAndUpdate({ email }, userResponse, { new: true });
+            if (!updatedUser) return res.status(400).json({ msg: "Error in updating user" });
+
+            return res.status(200).json(updatedUser);
+        } catch (err) {
+            console.log(err)
+            return res.status(500).json(err);
+        }
+    },
+
     createUser: async (req, res) => {
         try {
             const payload = req.body.payload;
