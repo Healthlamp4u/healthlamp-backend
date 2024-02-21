@@ -7,12 +7,19 @@ const DataSchema = new mongoose.Schema({
 
 const ImageSchema = new mongoose.Schema({
     imageUrl: { type: String },
-    description: { type: String },
+    title: { type: String },
 })
 
 const GallerySchema = new mongoose.Schema({
     date: { type: Date, default: Date.now() },
     image: [ImageSchema]
+})
+
+const reports = new mongoose.Schema({
+    uploadedOn: { type: Date, default: Date.now() },
+    title: { type: String },
+    fileName: { type: String },
+    fileUrl: { type: String }
 })
 
 const UserSchema = new mongoose.Schema({
@@ -35,18 +42,11 @@ const UserSchema = new mongoose.Schema({
     gallery: { type: [GallerySchema] },
     medicalHistory: [{ type: String }],
     approved: { type: Boolean, default: false },
-    waterIntake: {
-        type: [DataSchema],
-    },
-    running: {
-        type: [DataSchema],
-    },
+    waterIntake: { type: [DataSchema] },
+    running: { type: [DataSchema] },
+    labReports: { type: [reports] },
     createdAt: { type: Date, default: Date.now() }
 });
-
-// function arrayLimit(val) {
-//     return val.length <= 7;
-// }
 
 const User = mongoose.model('User', UserSchema);
 module.exports = User;
