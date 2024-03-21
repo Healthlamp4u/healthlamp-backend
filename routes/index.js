@@ -1,3 +1,4 @@
+const GymController = require("../controller/gymController")
 const userController = require("../controller/userController")
 const workoutController = require("../controller/workoutController")
 
@@ -23,5 +24,13 @@ router.post('/fetch-user-by-email', userController.getUserByEmail)
 router.post('/create-user', userController.createUser)
 router.put('/update-user', userController.updateUser)
 router.delete('/delete-user/:userId', userController.deleteUser)
+
+// Gym Routes
+router.get('/gyms', GymController.getAllGyms)
+router.get('/gym/:gymId', GymController.getGymById)
+router.post('/fetch-gym-by-email', GymController.getGymByEmail)
+router.post('/create-gym', GymController.createGym)
+router.put('/update-gym', GymController.updateGym)
+router.delete('/delete-gym', GymController.deleteGym)
 
 module.exports = router
