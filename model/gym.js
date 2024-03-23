@@ -14,7 +14,7 @@ const EquipmentSchema = new mongoose.Schema({
 const PricingSchema = new mongoose.Schema({
     title: { type: String },
     desc: { type: String },
-    price: { type: String }
+    pricing: { type: String }
 })
 
 const GymSchema = new mongoose.Schema({
