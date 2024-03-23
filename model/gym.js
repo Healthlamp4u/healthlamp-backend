@@ -11,6 +11,12 @@ const EquipmentSchema = new mongoose.Schema({
     description: { type: String }
 })
 
+const PricingSchema = new mongoose.Schema({
+    title: { type: String },
+    description: { type: String },
+    pricing: { type: String }
+})
+
 const GymSchema = new mongoose.Schema({
     name: { type: String },
     images: [{ type: String }],
@@ -27,7 +33,7 @@ const GymSchema = new mongoose.Schema({
     status: { type: String },
     clients: [{ type: String }],
     trainers: [{ type: String }],
-    pricing: [],
+    pricing: [PricingSchema],
     allowTrial: { type: Boolean, default: false }
 })
 
