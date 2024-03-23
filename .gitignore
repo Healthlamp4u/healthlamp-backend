@@ -1,2 +1,5 @@
 node_modules
 config/.env
+controller/authController.js
+middleware/
+model/admin.js

@@ -27,12 +27,13 @@ const GymSchema = new mongoose.Schema({
     locality: { type: String },
     city: { type: String },
     state: { type: String },
+    maps: { type: String },
     facilities: [FacilitySchema],
     equipments: [EquipmentSchema],
     status: { type: String },
     clients: [{ type: String }],
     trainers: [{ type: String }],
-    pricing: [],
+    pricing: [PricingSchema],
     allowTrial: { type: Boolean, default: false }
 })
 
