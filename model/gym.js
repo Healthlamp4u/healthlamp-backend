@@ -34,7 +34,8 @@ const GymSchema = new mongoose.Schema({
     clients: [{ type: String }],
     trainers: [{ type: String }],
     pricing: [PricingSchema],
-    allowTrial: { type: Boolean, default: false }
+    allowTrial: { type: Boolean, default: false },
+    specializations: [{ type: String }]
 })
 
 const Gym = mongoose.model('Gym', GymSchema)
