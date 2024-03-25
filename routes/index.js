@@ -1,4 +1,6 @@
 const GymController = require("../controller/gymController")
+const notificationController = require("../controller/notificationController")
+const trialsController = require("../controller/trialsController")
 const userController = require("../controller/userController")
 const workoutController = require("../controller/workoutController")
 
@@ -32,5 +34,18 @@ router.post('/fetch-gym-by-email', GymController.getGymByEmail)
 router.post('/create-gym', GymController.createGym)
 router.put('/update-gym', GymController.updateGym)
 router.delete('/delete-gym', GymController.deleteGym)
+
+// Trials Routes
+router.get('/trials/gym/:gymId', trialsController.getTrialsByGymId)
+router.get('/trials/user/:userId', trialsController.getTrialsByUserId)
+router.post('/existing-trial', trialsController.checkExistingTrials)
+router.post('/create-trial', trialsController.createTrial)
+router.put('/update-trial', trialsController.updateTrial)
+router.delete('/delete-trial/:trialId', trialsController.deleteTrial)
+
+// Notification Routes
+router.get('/notifications/:recipientId', notificationController.getNotificationByRecipientId)
+router.post('/create-notification', notificationController.createNotification)
+router.delete('/delete-notification/:id', notificationController.deleteNotification)
 
 module.exports = router
