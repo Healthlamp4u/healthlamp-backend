@@ -1,3 +1,4 @@
+const adminController = require("../controller/adminController")
 const GymController = require("../controller/gymController")
 const notificationController = require("../controller/notificationController")
 const trialsController = require("../controller/trialsController")
@@ -47,5 +48,12 @@ router.delete('/delete-trial/:trialId', trialsController.deleteTrial)
 router.get('/notifications/:recipientId', notificationController.getNotificationByRecipientId)
 router.post('/create-notification', notificationController.createNotification)
 router.delete('/delete-notification/:id', notificationController.deleteNotification)
+
+// Admin Routes
+router.get('/admin/:id', adminController.getAdminById)
+router.post('/fetch-admin-by-email', adminController.getAdminByEmail)
+router.post('/create-admin', adminController.createAdmin)
+router.put('/update-admin', adminController.updateAdmin)
+router.delete('/delete-admin/:id', adminController.deleteAdmin)
 
 module.exports = router
