@@ -34,7 +34,7 @@ router.get('/gym/:gymId', GymController.getGymById)
 router.post('/fetch-gym-by-email', GymController.getGymByEmail)
 router.post('/create-gym', GymController.createGym)
 router.put('/update-gym', GymController.updateGym)
-router.delete('/delete-gym', GymController.deleteGym)
+router.delete('/delete-gym/:gymId', GymController.deleteGym)
 
 // Trials Routes
 router.get('/trials/gym/:gymId', trialsController.getTrialsByGymId)
