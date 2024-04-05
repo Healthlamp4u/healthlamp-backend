@@ -17,6 +17,9 @@ if (process.env.ENV === "development") {
 // DB Setup
 require('./config/db')();
 
+// Firebase Admin Setup
+require('./config/firebaseAdmin')();
+
 // Routes
 app.use("/api", require('./routes/index'))
 
