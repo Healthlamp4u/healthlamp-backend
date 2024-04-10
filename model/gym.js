@@ -30,6 +30,7 @@ const GymSchema = new mongoose.Schema({
     city: { type: String },
     state: { type: String },
     maps: { type: String },
+    address: {type: String},
     facilities: [FacilitySchema],
     equipments: [EquipmentSchema],
     status: { type: String },
@@ -37,7 +38,8 @@ const GymSchema = new mongoose.Schema({
     trainers: [{ type: String }],
     pricing: [PricingSchema],
     allowTrial: { type: Boolean, default: false },
-    specializations: [{ type: String }]
+    specializations: [{ type: String }],
+    timing: { type: String }
 })
 
 const Gym = mongoose.model('Gym', GymSchema)
