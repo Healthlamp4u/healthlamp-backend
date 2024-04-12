@@ -16,6 +16,11 @@ const certificateSchema = new mongoose.Schema({
     uploadedOn: { type: Date, default: Date.now() }
 })
 
+const aadharSchema = new mongoose.Schema({
+    aadharNumber: { type: String },
+    link: { type: String }
+})
+
 const TrainerSchema = new mongoose.Schema({
     firstname: { type: String },
     lastname: { type: String },
@@ -28,6 +33,7 @@ const TrainerSchema = new mongoose.Schema({
     dob: { type: String },
     address: { type: String },
     profile: { type: String },
+    aadhar: [aadharSchema],
     associatedGym: { type: String },
     status: { type: String, enum: ['approved', 'pending'] },
     certificates: [certificateSchema],
