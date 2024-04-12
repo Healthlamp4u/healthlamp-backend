@@ -2,6 +2,7 @@ const adminController = require("../controller/adminController")
 const firebaseAdmin = require("../controller/firebaseAdminController")
 const GymController = require("../controller/gymController")
 const notificationController = require("../controller/notificationController")
+const TrainerController = require("../controller/trainerController")
 const trialsController = require("../controller/trialsController")
 const userController = require("../controller/userController")
 const workoutController = require("../controller/workoutController")
@@ -57,9 +58,17 @@ router.post('/create-admin', adminController.createAdmin)
 router.put('/update-admin', adminController.updateAdmin)
 router.delete('/delete-admin/:id', adminController.deleteAdmin)
 
-// Firebase Admin
+// Firebase Admin Routes
 router.get('/firebase-get-users', firebaseAdmin.getUsers)
 router.post('/firebase-get-user-by-email', firebaseAdmin.getUserByEmail)
 router.post('/firebase-delete-user', firebaseAdmin.deleteUser)
+
+// Trainer Routes
+router.get('/trainers', TrainerController.getAllTrainers)
+router.get('/trainer/:trainerId', TrainerController.getTrainerById)
+router.post('/fetch-trainer-by-email', TrainerController.getTrainerByEmail)
+router.post('/create-trainer', TrainerController.createTrainer)
+router.put('/update-trainer', TrainerController.updateTrainer)
+router.delete('/delete-trainer/:trainerId', TrainerController.deleteTrainer)
 
 module.exports = router
