@@ -18,8 +18,10 @@ const certificateSchema = new mongoose.Schema({
 
 const aadharSchema = new mongoose.Schema({
     aadharNumber: { type: String },
-    aadharUrl: { type: String },
-    aadharFileName: { type: String }
+    aadharFrontUrl: { type: String },
+    aadharFront: { type: String },
+    aadharBackUrl: { type: String },
+    aadharBack: { type: String }
 })
 
 const feesSchema = new mongoose.Schema({
