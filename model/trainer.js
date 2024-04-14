@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
 const workSchema = new mongoose.Schema({
-    company: { type: String },
+    institution: { type: String },
     position: { type: String },
     startDate: { type: String },
     endDate: { type: String },
-    desc: { type: String },
-    currentlyWorking: { type: Boolean }
+    currentlyWorking: { type: Boolean },
+    link: { type: String }
 })
 
 const certificateSchema = new mongoose.Schema({
@@ -49,6 +49,7 @@ const TrainerSchema = new mongoose.Schema({
     status: { type: String, enum: ['approved', 'pending'] },
     certificates: [certificateSchema],
     workExperience: [workSchema],
+    experience: { type: Number },
     clients: [{ type: String }],
     createdAt: { type: Date, default: Date.now() }
 })

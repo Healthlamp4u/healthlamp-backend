@@ -29,7 +29,6 @@ const trialsController = {
         try {
             const { gymId, userId } = req.body
             const existingTrial = await Trials.findOne({ userId, gymId })
-            console.log(existingTrial)
             if (!existingTrial) {
                 return res.status(200).json(false)
             } else if (existingTrial.length === 0) {

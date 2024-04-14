@@ -1,5 +1,6 @@
 const adminController = require("../controller/adminController")
 const firebaseAdmin = require("../controller/firebaseAdminController")
+const GymApplicationController = require("../controller/gymApplicationController")
 const GymController = require("../controller/gymController")
 const notificationController = require("../controller/notificationController")
 const TrainerController = require("../controller/trainerController")
@@ -70,5 +71,12 @@ router.post('/fetch-trainer-by-email', TrainerController.getTrainerByEmail)
 router.post('/create-trainer', TrainerController.createTrainer)
 router.put('/update-trainer', TrainerController.updateTrainer)
 router.delete('/delete-trainer/:trainerId', TrainerController.deleteTrainer)
+
+// Gym Applications
+router.get('/gym-applications/:gymId', GymApplicationController.getApplicationByGymId)
+router.post('/create-gym-application', GymApplicationController.createGymApplication)
+router.post('/existing-application', GymApplicationController.checkExistingApplication)
+router.put('/update-gym-application', GymApplicationController.updateGymApplication)
+router.delete('/delete-gym-application/:applicationId', GymApplicationController.deleteGymApplication)
 
 module.exports = router
