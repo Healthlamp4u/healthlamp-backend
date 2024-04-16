@@ -39,7 +39,8 @@ const GymSchema = new mongoose.Schema({
     pricing: [PricingSchema],
     allowTrial: { type: Boolean, default: false },
     specializations: [{ type: String }],
-    timing: { type: String }
+    timing: { type: String },
+    type: { type: String }
 })
 
 const Gym = mongoose.model('Gym', GymSchema)

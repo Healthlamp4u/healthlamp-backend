@@ -45,7 +45,8 @@ const UserSchema = new mongoose.Schema({
     waterIntake: { type: [DataSchema] },
     running: { type: [DataSchema] },
     labReports: { type: [reports] },
-    createdAt: { type: Date, default: Date.now() }
+    createdAt: { type: Date, default: Date.now() },
+    type: { type: String }
 });
 
 const User = mongoose.model('User', UserSchema);

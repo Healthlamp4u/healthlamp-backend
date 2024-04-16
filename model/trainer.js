@@ -51,7 +51,8 @@ const TrainerSchema = new mongoose.Schema({
     workExperience: [workSchema],
     experience: { type: Number },
     clients: [{ type: String }],
-    createdAt: { type: Date, default: Date.now() }
+    createdAt: { type: Date, default: Date.now() },
+    type: { type: String }
 })
 
 const Trainer = mongoose.model('Trainer', TrainerSchema)
