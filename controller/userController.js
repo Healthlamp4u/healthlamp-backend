@@ -76,8 +76,6 @@ const userController = {
             const userResponse = await User.findOne({ email });
             if (!userResponse) return res.status(400).json({ msg: "User not found" });
 
-            console.log(userResponse.labReports)
-
             return res.status(200).json(userResponse.labReports);
         } catch (err) {
             return res.status(500).json(err);

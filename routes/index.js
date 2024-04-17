@@ -6,6 +6,7 @@ const notificationController = require("../controller/notificationController")
 const OffersController = require("../controller/offersController")
 const TrainerController = require("../controller/trainerController")
 const trialsController = require("../controller/trialsController")
+const UserApplicationController = require("../controller/userApplicationController")
 const userController = require("../controller/userController")
 const workoutController = require("../controller/workoutController")
 
@@ -86,5 +87,12 @@ router.get('/offers/:id', OffersController.getOfferById)
 router.post('/create-offer', OffersController.createOffer)
 router.put('/update-offer', OffersController.updateOffer)
 router.delete('/delete-offer/:offerId', OffersController.deleteOffer)
+
+// User Applications
+router.get('/user-applications/:gymId', UserApplicationController.getApplicationByGymId)
+router.post('/create-user-application', UserApplicationController.createUserApplication)
+router.post('/existing-user-application', UserApplicationController.checkExistingApplication)
+router.put('/update-user-application', UserApplicationController.updateUserApplication)
+router.delete('/delete-user-application/:applicationId', UserApplicationController.deleteUserApplication)
 
 module.exports = router
