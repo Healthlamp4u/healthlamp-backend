@@ -1,4 +1,5 @@
 const adminController = require("../controller/adminController")
+const EnquiryController = require("../controller/EnquiryController")
 const firebaseAdmin = require("../controller/firebaseAdminController")
 const GymApplicationController = require("../controller/gymApplicationController")
 const GymController = require("../controller/gymController")
@@ -94,5 +95,13 @@ router.post('/create-user-application', UserApplicationController.createUserAppl
 router.post('/existing-user-application', UserApplicationController.checkExistingApplication)
 router.put('/update-user-application', UserApplicationController.updateUserApplication)
 router.delete('/delete-user-application/:applicationId', UserApplicationController.deleteUserApplication)
+
+// Enquiry
+router.get('/enquiries/:id', EnquiryController.getEnquiryById)
+router.get('/get-enquiry-by-sender/:id', EnquiryController.getEnquiryBySenderrId)
+router.get('/get-enquiry-by-receiver/:id', EnquiryController.getEnquiryByReceiverId)
+router.post('/create-enquiry', EnquiryController.createEnquiry)
+router.put('/update-enquiry', EnquiryController.updateEnquiry)
+router.delete('/delete-enquiry/:id', EnquiryController.deleteEnquiry)
 
 module.exports = router
