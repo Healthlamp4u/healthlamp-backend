@@ -70,6 +70,7 @@ router.post('/firebase-delete-user', firebaseAdmin.deleteUser)
 // Trainer Routes
 router.get('/trainers', TrainerController.getAllTrainers)
 router.get('/trainer/:trainerId', TrainerController.getTrainerById)
+router.get('/get-trainer-by-gym/:gymId', TrainerController.getTrainerByGymId)
 router.post('/fetch-trainer-by-email', TrainerController.getTrainerByEmail)
 router.post('/create-trainer', TrainerController.createTrainer)
 router.put('/update-trainer', TrainerController.updateTrainer)

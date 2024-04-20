@@ -37,6 +37,19 @@ const TrainerController = {
         }
     },
 
+    getTrainerByGymId: async (req, res) => {
+        try {
+            const gymId = req.params.gymId;
+
+            const trainerResponse = await Trainer.find({ associatedGym: gymId });
+            if (!trainerResponse) return res.status(400).json({ msg: "Trainer not found" });
+
+            return res.status(200).json(trainerResponse);
+        } catch (err) {
+            return res.status(500).json(err);
+        }
+    },
+
     createTrainer: async (req, res) => {
         try {
             const payload = req.body.payload;

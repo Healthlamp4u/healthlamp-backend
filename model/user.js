@@ -46,7 +46,8 @@ const UserSchema = new mongoose.Schema({
     running: { type: [DataSchema] },
     labReports: { type: [reports] },
     createdAt: { type: Date, default: Date.now() },
-    type: { type: String }
+    type: { type: String },
+    trainers: [{ type: String }]
 });
 
 const User = mongoose.model('User', UserSchema);

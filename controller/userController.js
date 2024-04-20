@@ -132,6 +132,7 @@ const userController = {
 
             return res.status(200).json(updatedUser);
         } catch (err) {
+            console.log(err)
             return res.status(500).json(err);
         }
     },
