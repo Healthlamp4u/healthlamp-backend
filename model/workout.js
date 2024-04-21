@@ -28,6 +28,8 @@ const workoutCategory = new mongoose.Schema({
 
 const WorkoutSchema = new mongoose.Schema({
     userId: { type: String },
+    createdBy: { type: String },
+    status: { type: String },
     workoutCategory: [workoutCategory],
     createdAt: {
         type: Date,
