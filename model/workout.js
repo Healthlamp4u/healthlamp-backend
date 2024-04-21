@@ -13,6 +13,8 @@ const workouts = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    createdBy: { type: String },
+    status: { type: String }
 })
 
 const workoutCategory = new mongoose.Schema({
@@ -21,7 +23,7 @@ const workoutCategory = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now()
-    },
+    }
 })
 
 const WorkoutSchema = new mongoose.Schema({
@@ -30,7 +32,7 @@ const WorkoutSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now()
-    }
+    },
 })
 
 const Workout = mongoose.model("Workout", WorkoutSchema)
