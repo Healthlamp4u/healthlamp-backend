@@ -13,6 +13,11 @@ const workoutController = require("../controller/workoutController")
 
 const router = require("express").Router()
 
+// Test Routes
+router.get("/test", (req, res) => {
+    res.status(200).send('Working fine!')
+})
+
 // Workout Routes
 router.get("/workout/:userId", workoutController.fetchAllWorkouts)
 router.post("/today-workout", workoutController.fetchTodaysWorkouts)
