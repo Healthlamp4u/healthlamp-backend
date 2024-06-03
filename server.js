@@ -3,13 +3,14 @@ require("dotenv").config()
 const express = require('express')
 const morgan = require("morgan")
 const cors = require("cors")
+const corsOption = require("./config/corsConfig")
 
 const app = express()
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOption));
 if (process.env.ENV === "development") {
     app.use(morgan("dev"))
 }
