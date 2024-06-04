@@ -16,7 +16,21 @@ const GymController = {
             const gymId = req.params.gymId;
 
             const gymResponse = await Gym.findOne({ _id: gymId });
+        
+
             if (!gymResponse) return res.status(400).json({ msg: "Gym not found" });
+
+            if(gymResponse?.showEmail == false){
+                const email = gymResponse.email.toString().trim().split("").map((ch, idx) => {
+                    if(['@', '.'].includes(ch) || gymResponse.email.toString().trim().length - idx <= 3){
+                        return ch
+                    }else{
+                        return '*'
+                    }
+                }).join("")
+
+                gymResponse.email = email
+            }
 
             return res.status(200).json(gymResponse);
         } catch (err) {
@@ -31,6 +45,17 @@ const GymController = {
             const gymResponse = await Gym.findOne({ email });
             if (!gymResponse) return res.status(400).json({ msg: "Gym not found" });
 
+            if(gymResponse?.showEmail == false){
+                const email = gymResponse.email.toString().trim().split("").map((ch, idx) => {
+                    if(['@', '.'].includes(ch) || gymResponse.email.toString().trim().length - idx <= 3){
+                        return ch
+                    }else{
+                        return '*'
+                    }
+                }).join("")
+
+                gymResponse.email = email
+            }
             return res.status(200).json(gymResponse);
         } catch (err) {
             return res.status(500).json(err);
@@ -62,10 +87,15 @@ const GymController = {
             const id = payload._id;
             if (!id) return res.status(400).json({ msg: "User ID cannot be null" });
 
+            
+
+            console.log(payload)
+        
+
             const updatedGym = await Gym.findOneAndUpdate({ _id: id }, payload, { new: true });
             if (!updatedGym) return res.status(400).json({ msg: "Error in updating gym" });
 
-            return res.status(200).json(updatedGym);
+            return res.status(200).json(payload);
         } catch (err) {
             console.log(err)
             return res.status(500).json(err);
