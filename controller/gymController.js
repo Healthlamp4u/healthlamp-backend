@@ -87,15 +87,13 @@ const GymController = {
             const id = payload._id;
             if (!id) return res.status(400).json({ msg: "User ID cannot be null" });
 
-            
-
-            console.log(payload)
-        
-
+            // console.log(payload)
+        // 
             const updatedGym = await Gym.findOneAndUpdate({ _id: id }, payload, { new: true });
             if (!updatedGym) return res.status(400).json({ msg: "Error in updating gym" });
 
-            return res.status(200).json(payload);
+            console.log(updatedGym)
+            return res.status(200).json(updatedGym);
         } catch (err) {
             console.log(err)
             return res.status(500).json(err);
