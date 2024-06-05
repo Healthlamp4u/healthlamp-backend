@@ -20,7 +20,7 @@ const GymController = {
 
             if (!gymResponse) return res.status(400).json({ msg: "Gym not found" });
 
-            if(gymResponse?.showEmail == false){
+            if(gymResponse?.showMailToUsers == false){
                 const email = gymResponse.email.toString().trim().split("").map((ch, idx) => {
                     if(['@', '.'].includes(ch) || gymResponse.email.toString().trim().length - idx <= 3){
                         return ch
@@ -41,20 +41,24 @@ const GymController = {
     getGymByEmail: async (req, res) => {
         try {
             const email = req.body.email;
+            const source = req.body.source;
+
 
             const gymResponse = await Gym.findOne({ email });
             if (!gymResponse) return res.status(400).json({ msg: "Gym not found" });
 
-            if(gymResponse?.showEmail == false){
-                const email = gymResponse.email.toString().trim().split("").map((ch, idx) => {
-                    if(['@', '.'].includes(ch) || gymResponse.email.toString().trim().length - idx <= 3){
-                        return ch
-                    }else{
-                        return '*'
-                    }
-                }).join("")
-
-                gymResponse.email = email
+            if(source != 'profile'){
+                if(gymResponse?.showMailToUsers == false){
+                    const email = gymResponse.email.toString().trim().split("").map((ch, idx) => {
+                        if(['@', '.'].includes(ch) || gymResponse.email.toString().trim().length - idx <= 3){
+                            return ch
+                        }else{
+                            return '*'
+                        }
+                    }).join("")
+    
+                    gymResponse.email = email
+                }
             }
             return res.status(200).json(gymResponse);
         } catch (err) {

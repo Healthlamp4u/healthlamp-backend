@@ -41,7 +41,8 @@ const GymSchema = new mongoose.Schema({
     specializations: [{ type: String }],
     timing: { type: String },
     type: { type: String },
-    video: { type: String }
+    video: { type: String },
+    showMailToUsers: {type: Boolean, default: false}
 })
 
 const Gym = mongoose.model('Gym', GymSchema)
